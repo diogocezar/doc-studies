@@ -239,6 +239,86 @@ Imagens de gradientes geralmente são produzidas através da convolução de fil
 
 São os principais problemas que temos com os dados:
 
-- Dados faltantes
-- Dados desbalanceados
-- Variáveis correlacionadas
+- Dados faltantes;
+- Dados desbalanceados;
+- Variáveis correlacionadas;
+
+## Dados Faltantes
+
+Em alguns casos alguns atributos da representação definida inicialmente podem estar faltando (missing features). Nestes casos, o pré-processamento mais comum é a imputação de dados.
+
+A ideia é criar novos dados com base nos já existentes.
+
+## Dados Desbalanceados
+
+Em alguns problemas, o desbalanceamento é algo intrínseco ao problema. Por exemplo, aplicações médicas isso é bastante comum.
+
+Uma das técnicas para mitigar o problema é conhecida como SMOTE que consiste na criação de dados sintéticos (que não existem de fato) para balancear a base de dados.
+
+## Variáveis correlacionadas
+
+Em alguns casos algumas variáveis não carregam nenhum poder de discriminação.Entretanto, se a fronteira de decisão fosse diferente, variáveis aparentemente irrelevantes seriam necessárias para discriminar as duas classes.
+
+Ou seja, a noção de relevância está diretamente com o objetivo a ser
+perseguido.
+
+## Função de Custo
+
+Uma matriz de confusão permite a visualização dos erros e dos acertos do classificador.
+
+Essa é uma matriz quadrada de tamanho `n x n` em que n é o número de classes.
+
+**Acurácia** é a razão entre as predições corretas pelo total.
+
+**Precisão** é o número de verdadeiros positivos (TP) divido pelo número de positivos estimados pelo modelo.
+
+**Recall** é o número de verdadeiros positivos (TP) divido pela soma de TP + (falso negativo) FN
+
+**F1Score** é um compromisso entre Precisão e Recall através de uma média
+harmônica.
+
+## Porque não usar a média aritmética simples?
+
+F1Score é dado pela média harmônica entre Precisão e Recall, isso garante que haja um compromisso entre os valores.
+
+Se uma média aritmética simples fosse utilizada, não seria possível extrair algum tipo de desbalanceamento por alguma das partes.
+
+Para ilustrar, supondo que os valores fossem:
+
+`P = 2`
+`R = 2`
+
+Os valores estão balanceados, então, não faz diferença qual média aplicar. Tanto a média simples, quanto a média harmônica, resultaria em `2`.
+
+Entretanto, ao considerar por exemplo os valores:
+
+`P = 1`
+`R = 3`
+
+A média artmética, continuaria a resultar em `2`. Mas notemos que o Recall é maior que a precisão. Ou seja, se há a necessidade de um compromisso entre os valores, então, aplica-se uma média harônica, que penalisa possíveis debalancemanetos. Neste caso, o resultado seria `1,5`.
+
+## Espaço RCO
+
+É uma é uma representação gráfica que ilustra o desempenho de um classificador binário em um determinado ponto de operação.
+
+## Funções de Custo em Problemas de Regressão
+
+Em problemas de regressão a função custo mais utilizada é a soma dos erros quadrados (MSE-Mean Squared Error)
+
+## Divisão de Dados
+
+- Dados são divididos em duas partes: treinamento e teste;
+- A base de treinamento é então dividida em validação e treinamento;
+- O erro resultante dos dados de validação fornece uma estimativa do erro do teste;
+- Resultado pode ser dependente da divisão dos dados;
+
+## Comparação Entre Classificadores
+
+Para essa comparação, não basta analisar os números de acertos/erros de dois classificados, é necessário aplicar comprovações estatísticas.
+
+- Wilcoxon;
+- McNemar;
+
+### Comparando Diversos Classificadores
+
+Teste Friedman;
